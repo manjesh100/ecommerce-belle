@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<!-- belle/index.html   11 Nov 2019 12:16:10 GMT -->
+<head>    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Belle E-commerce</title>
+<meta name="description" content="description">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Favicon -->
+<link rel="shortcut icon" href="assets/images/favicon.png" />
+<!-- Plugins CSS -->
+<link rel="stylesheet" href="assets/css/plugins.css">
+<!-- Bootstap CSS -->
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<!-- Main Style CSS -->
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<!-- <script>
+    var auth = window.localStorage.getItem('userDeteil');
+    if (!auth) {
+      alert("Please login first.");
+      window.location.href = "file:///D:/nodejs/2023/09022023/website/index.html";
+    }  
+  </script>  -->
+</head>
+
+<body class="template-index belle template-index-belle">
+<div id="pre-loader">
+    <img src="assets/images/loader.gif" alt="Loading..." />
+</div>
+<div class="pageWrapper">
+	<!--Search Form Drawer-->
+	<div class="search">
+        <div class="search__form">
+            <form class="search-bar__form" action="#">
+                <button class="go-btn search__button" type="submit"><i class="icon anm anm-search-l"></i></button>
+                <input class="search__input" type="search" name="q" value="" placeholder="Search entire store..." aria-label="Search" autocomplete="off">
+            </form>
+            <button type="button" class="search-trigger close-btn"><i class="anm anm-times-l"></i></button>
+        </div>
+    </div>
+    <!--End Search Form Drawer-->
+    <!--Top Header-->
+    <div class="top-header">
+        <div class="container-fluid">
+            <div class="row">
+            	<div class="col-10 col-sm-8 col-md-5 col-lg-4"> 
+                    <div class="language-dropdown">  <span class="language-dd">English</span> </div>
+                    <p class="phone-no"><i class="anm anm-phone-s"></i> +91 9654-00-9214</p>
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
+                	<div class="text-center"><p class="top-header_middle-text"> Worldwide Express Shipping</p></div>
+                </div>
+                <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
+                	<span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
+                      <!-----------------------login render --------------------->
+                        <ul class="customer-links list-inline">
+                            <li id="loginRender" ><a href="login.html">Login</a></li>
+                            <li id="createAccount"><a href="register.html">Create Account</a></li>
+                            <li id="wishlist"><a href="wishlist.html">Wishlist</a></li>  
+                            <li id="orderList">Order List</li>                             
+                             <li id="logout"></li>
+                            </ul>                           
+                        </ul>
+                      <!-------------------------login render end----------------->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Top Header-->
+    <!--Header-->
+    <div class="header-wrap classicHeader animated d-flex">
+    	<div class="container-fluid">        
+            <div class="row align-items-center">
+            	<!--Desktop Logo-->
+                <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
+                    <a href="index.html">
+                    	<img src="assets/images/logo.svg" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                    </a>
+                </div>
+                <!--End Desktop Logo-->
+                <div class="col-2 col-sm-3 col-md-3 col-lg-8">
+                	<div class="d-block d-lg-none">
+                        <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
+                        	<i class="icon anm anm-times-l"></i>
+                            <i class="anm anm-bars-r"></i>
+                        </button>
+                    </div>
+                	<!--Desktop Menu-->
+                	<nav class="grid__item" id="AccessibleNav"><!-- for mobile -->
+                        <ul id="siteNav" class="site-nav medium center hidearrow">
+                            <li class="lvl1 parent "><a href="index.html">Home </a> </li>
+                            <li class="lvl1"><a id="men" href="#">Men's </a></li>
+                            <li class="lvl1"><a id="women" href="#">Women </a></li>
+                            <li class="lvl1"><a id="kid" href="#">Kid's</a></li>
+                            <li class="lvl1"><a id="home" href="#"> Home & Kitchen Essentials</a> </li>                            
+                        </ul>
+                    </nav>
+                    <!--End Desktop Menu-->
+                </div>
+                <!--Mobile Logo-->
+                <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
+                	<div class="logo">
+                        <a href="index.html">  
+                            <img src="assets/images/logo.svg" alt="Belle E-commerce Home Page" title="Belle E-commerce" />
+                        </a>
+                    </div>
+                </div>
+                <!--Mobile Logo-->
+                <div class="col-4 col-sm-3 col-md-3 col-lg-2">
+                	<div class="site-cart">
+                    	<a href="#;" class="site-header__cart" title="Cart">
+                        	<i class="icon anm anm-bag-l"></i>
+                            <span id="CartCount" class="site-header__cart-count" data-cart-render="item_count"></span>
+                        </a>
+                        <!--Minicart Popup-->
+                        <div id="header-cart" class="block block-cart">                        	
+                            <div class="total">
+                            	<!-- <div class="total-in">
+                                	<span class="label">Cart Subtotal:</span><span class="product-price"><span class="money">$748.00</span></span>
+                                </div> -->
+                                 <div class="buttonSet text-center">
+                                    <a href="cart.html" class="btn btn-secondary btn--small">View Cart</a>
+                                    <!-- <a href="checkout.html" class="btn btn-secondary btn--small">Checkout</a> -->
+                                </div>
+                            </div>
+                        </div>
+                        <!--EndMinicart Popup-->
+                    </div>
+                    
+                </div>
+        	</div>
+        </div>
+    </div>
+    <!--End Header-->
+    <!--Mobile Menu-->   
+	<!--End Mobile Menu-->    
+    <!--Body Content-->
+    <br/><br/><br/><br/>      
+    <div id="page-content">
+       <!--Home slider-->    	
+       <!--Body Content-->
+    <div id="page-content">
+    	<!--Page Title-->
+    	<div class="page section-header text-center">
+			<div class="page-title">
+        		<div class="wrapper"><h1 class="page-width">Your cart</h1></div>
+      		</div>
+		</div>
+        <!--End Page Title-->
+        
+        <div class="container">
+        	<div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">  
+                		<table>
+                            <thead class="cart__row cart__header">
+                                <tr>
+                                    <th colspan="2" class="text-center">Product</th>
+                                    <th class="text-center">Price</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-right">Total</th>
+                                    <th class="action"> &nbsp;</th>
+                                </tr>
+                                
+                            </thead>                       
+                    		<tbody id="tbody"> 
+                                <tr class="cart__row border-bottom line1 cart-flex border-top">
+                                    <td></td><td></td> 
+                                       <td><input type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Checkout" disabled="disabled"></td>
+                                </tr> 
+                            </tbody> 
+                            <tr>
+                                <td></td>
+                                <td></td> 
+                                <td>
+                                    <b> Grand Total Amount <span id="finaltotal" class="finaltotal"></span></b>
+                                    <br/>   
+                                <form method="post" id="orderSave">     
+                                    <input type="hidden" name="totalPaymentPay" 
+                                    id="totalPaymentPay" class="totalPaymentPay"/>  
+
+                                    <button onclick="finalPayment()" class="btn finaltotalA" id="finaltotalA"
+                                    value="Place order" type="button">Place order</button>
+                                </form> 
+                                </td>
+                            </tr>                   		 
+                        </table> 
+					 
+                    
+                                 
+               	</div>
+               
+            </div>
+        </div>  
+       
+    </div>
+    <!--End Body Content--> 
+        <!--Store Feature-->     
+        <!--End Store Feature-->
+    </div>
+    <!--End Body Content-->    
+    <!--Footer-->
+    <footer id="footer">        
+        <div class="site-footer">
+        	<div class="container">
+     			<!--Footer Links-->
+            	<div class="footer-top">
+                	<div class="row">
+                    	<div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                        	<h4 class="h4">Quick Shop</h4>
+                            <ul>
+                            	<li><a href="#">Women</a></li>
+                                <li><a href="#">Men</a></li>
+                                <li><a href="#">Kids</a></li>
+                                <li><a href="#">Sportswear</a></li>
+                                <li><a href="#">Sale</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                        	<h4 class="h4">Informations</h4>
+                            <ul>
+                            	<li><a href="#">About us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Privacy policy</a></li>
+                                <li><a href="#">Terms &amp; condition</a></li>
+                                <li><a href="#">My Account</a></li>
+                            </ul>
+                        </div>
+                     
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
+                        	<h4 class="h4">Contact Us</h4>
+                            <ul class="addressFooter">
+                            	<li><i class="icon anm anm-map-marker-al"></i><p>55 Gallaxy Enque,<br>2568 steet, 23568 NY</p></li>
+                                <li class="phone"><i class="icon anm anm-phone-s"></i><p>(440) 000 000 0000</p></li>
+                                <li class="email"><i class="icon anm anm-envelope-l"></i><p>sales@yousite.com</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--End Footer Links-->
+                <hr>
+              
+            </div>
+        </div>
+    </footer>
+    <!--End Footer-->
+    <!--Scoll Top-->
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+    <!--End Scoll Top-->    
+    <!--Quick View popup-->
+  
+    <!--End Quick View popup-->    
+    <!-- Newsletter Popup -->
+ 
+	<!-- End Newsletter Popup -->    
+     <!-- Including Jquery -->
+     <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
+     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+     <script src="assets/js/vendor/jquery.cookie.js"></script>
+     <script src="assets/js/vendor/wow.min.js"></script>
+     <!-- Including Javascript -->
+     <script src="assets/js/bootstrap.min.js"></script>
+     <script src="assets/js/plugins.js"></script>
+     <script src="assets/js/popper.min.js"></script>
+     <script src="assets/js/lazysizes.js"></script>
+     <script src="assets/js/main.js"></script>
+     <!--For Newsletter Popup-->
+     <script>
+		jQuery(document).ready(function(){  
+		  jQuery('.closepopup').on('click', function () {
+			  jQuery('#popup-container').fadeOut();
+			  jQuery('#modalOverly').fadeOut();
+		  });		  
+		  var visits = jQuery.cookie('visits') || 0;
+		  visits++;
+		  jQuery.cookie('visits', visits, { expires: 1, path: '/' });
+		  console.debug(jQuery.cookie('visits')); 
+		  if ( jQuery.cookie('visits') > 1 ) {
+			jQuery('#modalOverly').fadeOut();
+			jQuery('#popup-container').hide();
+		  } else {
+			  var pageHeight = jQuery(document).height();
+			 // jQuery('<div id="modalOverly"></div>').insertBefore('body');
+			  jQuery('#modalOverly').css("height", pageHeight);
+			  jQuery('#popup-container').show();
+		  }
+		  if (jQuery.cookie('noShowWelcome')) { jQuery('#popup-container').hide(); jQuery('#active-popup').hide(); }
+
+        $("#men").click(function(){   
+            $("#mens").show();  
+            $("#womens").hide();           
+            $("#kids").hide();
+            $("#homes").hide(); 
+            $("#slideshowS").hide();
+        })
+        $("#women").click(function(){
+            $("#mens").hide();  
+            $("#womens").show();           
+            $("#kids").hide();
+            $("#homes").hide(); 
+            $("#slideshowS").hide();
+        })
+
+        $("#kid").click(function(){
+            $("#mens").hide();  
+            $("#womens").hide();           
+            $("#kids").show();
+            $("#homes").hide(); 
+            $("#slideshowS").hide();
+        })
+
+        $("#home").click(function(){
+            $("#mens").hide();  
+            $("#womens").hide();           
+            $("#kids").hide();
+            $("#homes").show(); 
+            $("#slideshowS").hide();
+        })  
+
+		}); 
+		
+		 
+		 
+	</script>
+    <!--End For Newsletter Popup-->
+</div>
+</body>
+
+<!-- belle/index.html   11 Nov 2019 12:20:55 GMT -->
+</html> 
+
+<script>
+let userDatails = localStorage.getItem("auth");
+  if(userDatails)
+  {
+    let resultObj = JSON.parse(userDatails);            
+    document.querySelector("#loginRender").innerHTML = "HELLO - " +resultObj.userdata.name;
+    document.querySelector("#logout").innerHTML = "<a href='#'>Logout</a>";
+    document.querySelector("#orderList").innerHTML=`<a href="my-order.html">Order List</a>`;
+    document.querySelector('#createAccount').style.display ="none";
+    document.querySelector('#wishlist').style.display ="none";
+  }
+$("#logout").click(function(){     
+    localStorage.clear();
+    location='index.html';
+})
+$(document).ready(function(){  
+
+let JwtKeyVal =JSON.parse(localStorage.getItem("auth")).userdata.JwtKey; 
+let userdataID =JSON.parse(localStorage.getItem("auth")).userdata.id; 
+
+
+function carthtml(result)
+    { 
+        var finaltotal =0;
+        let cartListObjectRender = ""; 
+        result.cartListResult.forEach(cartListResultKey => {  
+            cartListObjectRender += `
+            <tr class="cart__row border-bottom line1 cart-flex border-top">
+                                    <td class="cart__image-wrapper cart-flex-item">
+                                        <a href="#"><img class="cart__image" src="D:/nodejs/2023/09022023/public/assets/images/productImage/${cartListResultKey.picure}" alt="Minerva Dress black"></a>
+                                    </td>
+                                    <td class="cart__meta small--text-left cart-flex-item">
+                                        <div class="list-view-item__title">
+                                            <a href="#">${cartListResultKey.name}</a>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price-wrapper cart-flex-item">
+                                        <span class="money">${cartListResultKey.price}</span>
+                                    </td>
+                                    <td class="cart__update-wrapper cart-flex-item text-right">
+                                        <div class="cart__qty text-center">
+                                            <div class="qtyField">                                                
+                                                <input style="width: 74px; border-block-color: revert;" class="cart__qty-input qty quantityUpdate" type="text" 
+                                                name="updates" id="${cartListResultKey.productId}" value="${cartListResultKey.quantity}" 
+                                                pattern="[0-9]*">                                                
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right small--hide cart-price">
+                                        <div><span id="finalPrice" class="finalPrice">${cartListResultKey.grandTotal}</span></div>
+                                    </td>
+                                    <td class="text-center small--hide cart_Delete">                                                                                
+                                        <button href="javascript:void(0)"  
+										class="btn btn-app dlt-categories" id="${cartListResultKey.id}"
+                                     title="Delete"> Delete</button>  
+                                    </td>
+                                    
+</tr> 
+            `;  
+
+           
+                    })  
+                    
+            document.querySelector("#tbody").innerHTML = cartListObjectRender;          
+            //grand total amount start
+            $('.finalPrice').each(function(index){ 
+                finaltotal += Number($(this).text());
+             })      
+             $('.finaltotal').text(finaltotal); 
+             document.getElementById('totalPaymentPay').value = finaltotal;
+           //  let userId =JSON.parse(localStorage.getItem("auth")).userdata.id;   
+           //  document.getElementById("userId").value = userId; 
+             //localStorage.setItem("paymentValue", finaltotal);
+            //  alert(localStorage.getItem("paymentValue"));
+                                 
+    } 
+    
+
+
+
+   function cartDetails()
+   {
+    let JwtKeyVal =JSON.parse(localStorage.getItem("auth")).userdata.JwtKey; 
+    let userId =JSON.parse(localStorage.getItem("auth")).userdata.id;     
+     window.hostURL = "http://localhost:9000"; 
+        $.ajax({ 
+            url:window.hostURL+'/cart/cart-list', 
+            data:{'userId': userId },            
+            method:"POST",            
+            headers:{                        
+                    "Authorization": JwtKeyVal  
+                    },
+            success:function(result){ 
+                carthtml(result)  
+            
+            },
+            error:function(error){   
+                alert(error);
+                     
+            }
+        }) 
+   }
+
+function CartCount() 
+{    let JwtKeyVal =JSON.parse(localStorage.getItem("auth")).userdata.JwtKey; 
+    let userId =JSON.parse(localStorage.getItem("auth")).userdata.id;  
+    
+    window.hostURL = "http://localhost:9000"; 
+        $.ajax({ 
+            url:window.hostURL+'/cart/count-cart', 
+            data:{'userId': userId},            
+            method:"POST",            
+            headers:{                        
+                    "Authorization": JwtKeyVal  
+                    },
+            success:function(result){              
+               //console.log(JSON.stringify(result["cartCount"][0]["countCartData"]));
+                $('#CartCount').html(JSON.stringify(result["cartCount"][0]["countCartData"])); 
+            },
+            error:function(error){   
+                alert(error);                     
+            }
+        }) 
+    
+}
+
+cartDetails();  
+CartCount();  
+ 
+}); 
+
+$(document).on("click" , ".cart_Delete .dlt-categories" , function() 
+  {   
+    let JwtKeyVal =JSON.parse(localStorage.getItem("auth")).userdata.JwtKey;     
+     let catId = this.id;
+     console.log(catId);
+    $.ajax({
+          url: window.hostURL+'/cart/cart-delete',
+          method:"DELETE",
+          data:{"id": catId},
+          headers:{                        
+                         "Authorization": JwtKeyVal  
+                    }, 
+          success: function(result){
+            alert("Cart sucessfully Delete");
+            window.location.reload();
+            console.log(result);
+          },
+          error: function(error){
+            console.log(error);
+          }
+        }); 
+  });
+
+ $(document).on("change", ".qtyField .quantityUpdate", function()
+ {
+    let productId = this.id;
+    //console.log(productId, "quantityUpdate");
+    let quantity = this.value;    
+    //console.log(cartValue, "quantityUpdate");
+    let JwtKeyVal =JSON.parse(localStorage.getItem("auth")).userdata.JwtKey;
+    let userId =JSON.parse(localStorage.getItem("auth")).userdata.id;  
+
+    $.ajax({
+          url: window.hostURL+'/cart/count-update',
+          method:"POST",
+          data:{"userId": userId, "productId": productId, "quantity": quantity},
+          headers:{                        
+                         "Authorization": JwtKeyVal  
+                    }, 
+          success: function(result){
+           alert("Cart update sucessfully");
+            window.location.reload();
+            console.log(result);
+          },
+          error: function(error){
+            console.log(error);
+          }
+        }); 
+ }); 
+
+function finalPayment()
+{  
+    let totalPaymentPay = document.getElementById("totalPaymentPay").value;
+    let userId =JSON.parse(localStorage.getItem("auth")).userdata.id; 
+    let JwtKeyVal =JSON.parse(localStorage.getItem("auth")).userdata.JwtKey;
+        $.ajax({
+          url: window.hostURL+'/order/order-details',
+          method:"POST",
+          data:{"userId": userId, "grandTotal": totalPaymentPay},
+          headers:{                        
+                         "Authorization": JwtKeyVal  
+                    }, 
+          success: function(result){
+           alert("your order sucessfully place");
+          // location.replace("my-order.html")
+           location.replace("my-order.html");
+          // window.location("my-order.html");
+           console.log(result);
+          },
+          error: function(error){
+            console.log(error);
+          }
+        }); 
+
+     
+
+
+
+} 
+
+
+
+
+    
+</script>
+
+ 
+
+
+
+
+ 
+
+

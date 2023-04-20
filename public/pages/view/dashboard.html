@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Purple Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+  <!-----model start   ---------->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-------model end ------------------------->
+  <script>
+    var auth = window.localStorage.getItem('userDeteil');
+    if (!auth) {
+      alert("Please login first.");
+      window.location.href = "/";
+    }  
+  </script>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.svg"
+            alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg"
+            alt="logo" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <div class="nav-profile-img">
+                <img src="../../assets/images/faces/face1.jpg" alt="image">
+                <span class="availability-status online"></span>
+              </div>
+              <div class="nav-profile-text">
+                <p class="mb-1 text-black name"></p>
+              </div>
+            </a>
+            <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" id="logout" href="#">
+                <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+            </div>
+          </li>
+
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item nav-profile">
+            <a href="#" class="nav-link">
+              <div class="nav-profile-image">
+                <img src="../../assets/images/faces/face1.jpg" alt="profile">
+                <span class="login-status online"></span>
+                <!--change to offline or busy as needed-->
+              </div>
+              <div class="nav-profile-text d-flex flex-column">
+                <span class="font-weight-bold mb-2 name">David Grey. H</span>
+                <span class="text-secondary text-small">Project Manager</span>
+              </div>
+              <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../index.html">
+              <span class="menu-title">Dashboard</span>
+              <i class="mdi mdi-home menu-icon"></i>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false"
+              aria-controls="general-pages">
+              <span class="menu-title"> Categories </span>
+              <i class="menu-arrow"></i>
+              <i class="mdi mdi-medical-bag menu-icon"></i>
+            </a>
+            <div class="collapse" id="general-pages">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" data-toggle="modal" data-target="#addCategories">Add
+                    Categories </a></li>
+                <li class="nav-item"> <a class="nav-link" id="categoriesList" onclick="categoriesDataList()"
+                    data-id="categoriesId"> Categories List </a></li>
+
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+              aria-controls="ui-basic">
+              <span class="menu-title">Products</span>
+              <i class="menu-arrow"></i>
+              <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="modal" data-target="#addProduct">Add Product</a>
+                </li>
+                <li class="nav-item"> <a class="nav-link" id="productList" onclick="productDataList()"
+                    data-id="productId">Product List</a></li>
+              </ul>
+            </div>
+          </li>
+
+
+        </ul>
+      </nav>
+      <!-- partial -->
+      <!-------------Cantent Area start ------------------>
+      <div class="col main pt-5 mt-3">
+        <div class="row mb-3" id="dashboardArea">
+          <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card bg-success text-white h-100">
+              <div class="card-body bg-success">
+                <div class="rotate">
+                  <i class="fa fa-user fa-4x"></i>
+                </div>
+                <h6 class="text-uppercase">Total Users</h6>
+                <h1 class="display-4">134</h1>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card text-white bg-danger h-100">
+              <div class="card-body bg-danger">
+                <div class="rotate">
+                  <i class="fa fa-list fa-4x"></i>
+                </div>
+                <h6 class="text-uppercase">Total Categories</h6>
+                <h1 class="display-4">87</h1>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card text-white bg-info h-100">
+              <div class="card-body bg-info">
+                <div class="rotate">
+                  <i class="fa fa-twitter fa-4x"></i>
+                </div>
+                <h6 class="text-uppercase">Total Product</h6>
+                <h1 class="display-4">125</h1>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card text-white bg-warning h-100">
+              <div class="card-body">
+                <div class="rotate">
+                  <i class="fa fa-share fa-4x"></i>
+                </div>
+                <h6 class="text-uppercase">Total Order</h6>
+                <h1 class="display-4">36</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-----------------------Product data list start-------------------------------->
+        <div class="row mb-3" id="databaseTable">
+          <div class="col-lg-12 stretch-card">
+            <div class="card">
+              <h4>Product Data Table</h4>
+              <div id="productView" class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th> # </th>
+                      <th>Name</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-----------------------Product data list end-------------------------------->
+
+        <div class="row mb-3" id="databaseTableCategories">
+          <div class="col-lg-12 stretch-card">
+            <div class="card">
+              <h4> Categories Data Table</h4>
+              <div id="categoryView" class="card-body">
+                <table class="table table-bordered">
+
+                  <thead>
+                    <tr>
+                      <th> # </th>
+                      <th> Product </th>
+                      <th> Action </th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-------------Cantent Area end ------------------>
+      <!---------product popup start --------------------------->
+      <div class="modal" id="addProduct">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <span id="resultMessage"></span>
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Add Product</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <span id="productSucessfullySave"></span>
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+
+                  <div id="cardBodySelectProduct" class="card-body">
+                    <form class="forms-sample" id="productFormData" method="post" enctype="multipart/form-data">
+                      <label for="exampleInputName1">Please select categories</label><br />
+                      <select name="catId" id="catId" onclick="categoriesDataSelect()">
+                        select Categories
+                        <option value=""> Please select</option>
+                      </select>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                      </div>
+
+                      <div class="form-group">
+                        <label>File upload</label>
+                        <input type="file" name="picure" id="picure" />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Quantity</label>
+                        <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Name">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Price</label>
+                        <input type="text" class="form-control" name="price" id="price" placeholder="Name">
+                      </div>
+
+                      <button type="submit" id="addProducts" class="btn btn-gradient-primary me-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <!-- Modal footer -->
+          </div>
+        </div>
+
+      </div>
+      <!---------product popup end --------------------------------------------------->
+      <!---------------------Categories tab  start------------------------------------->
+      <div class="modal" id="addCategories">
+        <div class="modal-dialog">
+          <div class="modal-content" id="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Add Categories</h4><br />
+              <span style="background-color: red;" id="categoriesSucessfullySave"></span>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <form class="forms-sample" id="categoriesData">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Enter Categories</label>
+                        <input type="text" class="form-control" name="cateName" id="cateName" placeholder="Name">
+                      </div>
+                      <button type="button" id="categoriesSubmit" class="btn btn-gradient-primary me-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal footer -->
+          </div>
+        </div>
+      </div>
+      <!---------------------Categories tab end ------------------------------------->
+      <!-- container-scroller -->
+      <!-- plugins:js -->
+      <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+      <!-- endinject -->
+      <!-- Plugin js for this page -->
+      <!-- End plugin js for this page -->
+      <!-- inject:js -->
+      <script src="../../assets/js/off-canvas.js"></script>
+      <script src="../../assets/js/hoverable-collapse.js"></script>
+      <script src="../../assets/js/misc.js"></script>
+      <!-- endinject -->
+      <!-- Custom js for this page -->
+      <!-- End custom js for this page -->
+      <script>
+        function renderUserDetails() {
+          //num ,str, bool, {[obj]}, null ,undef
+          //isArray , {}
+
+          //JSON.stringify( anyType ) -> string , JSON.parse( string ) -> sameType
+          let userDetail = JSON.parse(localStorage.getItem("userDeteil"));
+
+          document.querySelectorAll(".name").forEach(el => {
+            el.innerHTML = userDetail.userdata.name;
+          })
+        }
+        renderUserDetails()
+        $('#logout').click(function () {
+          localStorage.clear();
+          window.location.href = "/";
+        })
+
+        $(document).ready(function () {
+
+          $("#dashboardArea").show();
+          $("#databaseTable").hide();
+          $("#databaseTableCategories").hide();
+          $("#productList").click(function () {
+            $("#dashboardArea").hide();
+            $("#databaseTable").show();
+            $("#databaseTableCategories").hide();
+          })
+          $("#categoriesList").click(function () {
+            $("#dashboardArea").hide();
+            $("#databaseTable").hide();
+            $("#databaseTableCategories").show();
+          })
+
+        })
+
+
+        //categories api call
+        let JwtKeyVal = JSON.parse(localStorage.getItem("userDeteil")).userdata.JwtKey;
+        window.hostURL = "http://localhost:9000";
+        //=====================================================categories  submit start  ==========================================
+        $("#categoriesSubmit").click(function () {
+          let formdetails = $('#categoriesData').serialize();
+          $.ajax({
+            url: window.hostURL + '/categories/add-categories',
+            data: formdetails,
+            method: "POST",
+            headers: {
+              "Authorization": JwtKeyVal
+            },
+            success: function (result) {
+              console.log(result.message);
+              $('#categoriesSucessfullySave').html(result.message);
+              document.getElementById("categoriesData").reset();
+              // window.location.href = window.hostURL+'/dashboard'; 
+            },
+            error: function (error) {
+              console.log(error.responseJSON.massage);
+              // $('#sucessfullylogin').html(error.responseJSON.massage);                
+            }
+          })
+        })
+
+        $(document).on("click", "#categoryView .dlt-categories", function () {
+          let catId = this.id.substring(14);
+          $.ajax({
+            url: window.hostURL + '/categories/categories-delete',
+            method: "DELETE",
+            data: { "cateId": catId },
+            headers: {
+              "Authorization": JwtKeyVal
+            },
+            success: function (result) {
+              console.log(result);
+            },
+            error: function (error) {
+              console.log(error);
+            }
+          });
+        });
+
+        function categoriesDataList() {
+          function renderCategoriesList(result) {
+            let allCategories = "";
+            let i = 1;
+            result.categoriesObjectList.forEach(category => {
+              allCategories += `<tr class="table-info">
+                              <td>  ${i++}  </td><td>${category.cateName}</td>
+                              <td>                                
+                                <button href="javascript:void(0)"  
+												            class="btn btn-app dlt-categories" id="dlt-categories${category.id}"
+                                     title="Delete"> Delete</button>                                      
+                                   </td>                                
+                                </td>
+                              </tr>`
+            })
+            document.querySelector("#categoryView tbody").innerHTML = allCategories;
+          }
+
+          let categoriesDataListCheck = JSON.parse(localStorage.getItem('categoriesDataList'));
+          window.hostURL = "http://localhost:9000";
+          if (categoriesDataListCheck) {
+            console.log("local call");
+            renderCategoriesList(categoriesDataListCheck)
+          } else {
+            console.log("api call");
+            $.ajax({
+              url: window.hostURL + '/categories/categories-list',
+              method: "GET",
+              headers: {
+                "Authorization": JwtKeyVal
+              },
+              success: function (result) {
+                localStorage.setItem("categoriesDataList", JSON.stringify(result));
+                renderCategoriesList(result)
+              },
+              error: function (error) {
+                console.log(error);
+              }
+            });
+          }
+
+        }
+        //----------------------categorie-end-------------------------------------------------------------   
+        //----------------------product   start ------------------------------  
+        function productDataList() {
+
+          function renderProductList(result) {
+
+
+            let allProductList = "";
+            let i = 1;
+            result.allproductList.forEach(product => {
+              allProductList += `<tr class="table-info">
+                                  <td>${i++}</td>
+                                  <td>${product.name}</td>
+                                  <td>${product.quantity}</td>
+                                  <td>${product.price}</td>
+                                  <td>
+                                    <a href="javascript:void(0)"  
+												            class="btn btn-app dlt-product" id="dlt-product"
+                                     title="Delete" v-deleteProductId="${product.id}">                                    
+                                    Delete</a></td>
+                              </tr>`
+            })
+            document.querySelector("#productView tbody").innerHTML = allProductList;
+          }
+
+          let productDataListCheckLocalStorage = localStorage.getItem('resultProductDataList');
+          window.hostURL = "http://localhost:9000";
+          if (productDataListCheckLocalStorage) {
+            renderProductList(categoriesDataListCheck)
+          } else {
+            $.ajax({
+              url: window.hostURL + '/product/all-product-list',
+              method: "GET",
+              headers: {
+                "Authorization": JwtKeyVal
+              },
+              success: function (result) {
+
+                localStorage.setItem("#resultProductDataList", JSON.stringify(result));
+                renderProductList(result);
+                //document.querySelector("#productViewList table").innerHTML += allProductList;
+              },
+              error: function (error) {
+                console.log(error);
+              }
+            })
+          }
+
+        }
+        //----------------------product list end------------------------------   
+
+        function categoriesDataSelect() {
+          window.hostURL = "http://localhost:9000";
+          $.ajax({
+            url: window.hostURL + '/categories/categories-list',
+            method: "GET",
+            headers: {
+              "Authorization": JwtKeyVal
+            },
+            success: function (result) {
+              result.categoriesObjectList.forEach(c => {
+                document.getElementById('catId').options.add(new Option(c.cateName, c.id))
+              })
+
+            },
+            error: function (error) {
+              console.log(error);
+            }
+          });
+        }
+
+
+
+        $("#productFormData").submit(function (e) {
+          e.preventDefault();
+          var formData = new FormData(this);
+          $.ajax({
+            url: window.hostURL + '/product/add-product',
+            data: formData,
+            method: "POST",
+            processData: false,
+            contentType: false,
+            headers: {
+              "Authorization": JwtKeyVal
+            },
+            success: function (result) {
+              console.log(result);
+              $('#addProducts').one('click', clickHandler);
+              $('#productSucessfullySave').html(result.message);
+              document.getElementById("productFormData").reset();
+
+            },
+            error: function (error) {
+              console.log(error);
+              let msg = "<ul>";
+              Object.keys(error.responseJSON).forEach(key => {
+                msg += "<li style='background-color: red;'>";
+                msg += error.responseJSON[key][0];
+                msg += "</li>"
+              })
+              msg += "</ul>"
+              $("#resultMessage").html(msg);
+            }
+          })
+        })
+
+
+
+
+
+      </script>
+</body>
+
+</html>
