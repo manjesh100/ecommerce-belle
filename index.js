@@ -22,6 +22,9 @@ app.use('/categories', categoriesdUrl);
 const  productUrl = require('./src/routes/product-routes');
 app.use('/product', productUrl); 
 
+
+
+
 const pagelist = require('./src/routes/frontListing-routes');
 app.use('/front-product', pagelist);
 
