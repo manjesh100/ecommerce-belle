@@ -3,8 +3,7 @@ const router = express.Router();
 const Validator = require('Validator');
 const cartPageProductService = require('../service/cartService');
  
-
-class cart
+class cart      
 {
    async addCart(req, res)
    {  
